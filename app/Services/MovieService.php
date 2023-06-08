@@ -15,7 +15,7 @@ class MovieService
         if ($title) {
             $movies = Movie::search($title);
         } else {
-            $movies = Movie::paginate(10);
+            $movies = Movie::get();
         }
 
         return $movies;
@@ -56,11 +56,11 @@ class MovieService
     public function editMovie(Request $request, string $id)
     {
         $request->validate([
-            'title' => 'required|unique:movies,title',
+            'title' => 'required',
             'director' => 'required',
             'image_url' => 'url',
             'duration' => 'required|between:1,500',
-            'release_date' => 'required|unique:movies,release_date',
+            'release_date' => 'required',
             'genre' => 'required'
         ]);
 
