@@ -11,6 +11,6 @@ class Movie extends Model
 
     public static function search($title)
     {
-        return Movie::where('title', 'like', '%' . $title . '%')->get();
+        return Movie::where('title', 'like', '%' . $title . '%')->paginate(10);
     }
 }

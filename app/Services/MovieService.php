@@ -15,7 +15,7 @@ class MovieService
         if ($title) {
             $movies = Movie::search($title);
         } else {
-            $movies = Movie::get();
+            $movies = Movie::paginate(10);
         }
 
         return $movies;
